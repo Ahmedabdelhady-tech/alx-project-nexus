@@ -14,7 +14,7 @@ class NotificationSerializer(serializers.ModelSerializer):
                 "id": 1,
                 "user_username": "john_doe",
                 "message": "Your application has been received.",
-                "created_at": "2023-01-01T00:00:00Z",
+                "created_at": "2025-01-01T00:00:00Z",
                 "is_read": False,
             }
         }
@@ -33,7 +33,7 @@ class FavoriteJobSerializer(serializers.ModelSerializer):
                 "id": 1,
                 "user_username": "john_doe",
                 "job_title": "Software Engineer",
-                "created_at": "2023-01-01T00:00:00Z",
+                "created_at": "2025-01-01T00:00:00Z",
             }
         }
 

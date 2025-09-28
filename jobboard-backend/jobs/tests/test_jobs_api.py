@@ -41,7 +41,9 @@ class JobAPITest(APITestCase):
         data = {
             "title": "Frontend Developer",
             "description": "React + Django",
-            "category": self.category.id,
+            "location": "Remote",
+            "employment_type": "FT",
+            "category_id": self.category.id,
         }
         response = self.client.post(self.jobs_url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
@@ -51,12 +53,15 @@ class JobAPITest(APITestCase):
         data = {
             "title": "Frontend Developer",
             "description": "React + Django",
-            "category": self.category.id,
+            "location": "Remote",
+            "employment_type": "FT",
+            "category_id": self.category.id,
         }
         response = self.client.post(self.jobs_url, data, format="json")
+        print(response.data)
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
         self.assertEqual(Job.objects.count(), 2)
-        self.assertEqual(Job.objects.last().title, "Frontend Developer")
+        self.assertEqual(response.data["title"], "Frontend Developer")
 
     def test_update_job_authenticated_admin(self):
         self.client.force_authenticate(user=self.admin)
@@ -71,3 +76,10 @@ class JobAPITest(APITestCase):
         response = self.client.delete(self.job_url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
         self.assertEqual(Job.objects.count(), 0)
+
+    def test_job_list_filter_by_category(self):
+        response = self.client.get(self.jobs_url, {"category": self.category.id})
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        self.assertGreaterEqual(len(response.data["results"]), 1)
+        for job in response.data["results"]:
+            self.assertEqual(job["category"]["id"], self.category.id)
