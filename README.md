@@ -1,89 +1,80 @@
-# 🧑‍💻 Job Board Backend - ProDev BE
+# 🧑‍💻 Job Board Backend – ProDev BE Capstone
 
 ## 📌 Overview
+The **Job Board Backend** is a scalable and secure RESTful API designed for managing job postings, categories, and applications.  
+It was developed as part of the **ProDev Backend Engineering Program (Capstone Project)**, with a strong focus on **clean architecture, authentication, and industry best practices**.  
 
-This repository contains the backend for a **Job Board Platform**, developed as part of the **ProDev Backend Engineering Program**.  
-The system facilitates **job postings, secure role-based access control (RBAC), and efficient job search features**.  
-
-The backend integrates advanced database optimization techniques, modular APIs, and comprehensive documentation for seamless integration with frontend clients.
-
----
-
-## 🎯 Project Goals
-
-- **API Development**: Build APIs for managing job postings, categories, and job applications.  
-- **Access Control**: Implement role-based access control (Admins vs Users).  
-- **Database Efficiency**: Optimize job search with indexing and efficient queries.  
-- **Documentation**: Provide detailed API documentation with Swagger.
+This backend enables employers to post jobs and candidates to browse, apply, and manage opportunities efficiently.
 
 ---
 
-## 🛠 Technologies Used
-
-| Technology   | Purpose |
-|--------------|---------|
-| **Django**   | High-level Python framework for rapid development |
-| **PostgreSQL** | Database for storing job board data |
-| **JWT**      | Secure role-based authentication |
-| **Swagger**  | API endpoint documentation |
+## 🎯 Core Objectives
+- **Job Management** → CRUD operations for job postings and categories.  
+- **User Roles** → Admins manage postings; users apply and save jobs.  
+- **Security** → JWT authentication with role-based access control (RBAC).  
+- **Search & Filter** → Optimized queries by categories, locations, and job types.  
+- **Documentation** → Interactive API documentation with Swagger/OpenAPI.  
 
 ---
 
-## 🔑 Key Features
+## 🛠️ Tech Stack
 
-### 📂 Job Posting Management
+| Technology       | Purpose |
+|------------------|---------|
+| **Django & DRF** | Backend framework & RESTful API design |
+| **PostgreSQL**   | Relational database |
+| **JWT (SimpleJWT)** | Authentication & authorization |
+| **Swagger (drf-yasg)** | Interactive API documentation |
+| **pytest / DRF Test** | Automated testing |
+| **Gunicorn + Whitenoise** | Deployment-ready stack |
 
-- CRUD APIs for creating, updating, deleting, and retrieving job postings  
-- Categorization by industry, location, and type  
+---
 
-### 🔒 Role-Based Authentication
+## 🔑 Features
 
-- **Admins**: Manage jobs and categories  
-- **Users**: Apply for jobs and manage their applications  
+### 📂 Job Posting & Categories
+- CRUD operations for jobs and categories.  
+- Organize jobs by **category, location, and employment type**.  
+
+### 🔒 Authentication & Permissions
+- **Admins** → Manage jobs & categories.  
+- **Users** → Apply for jobs, manage favorites, and view applications.  
+- JWT tokens with refresh & expiration.  
 
 ### ⚡ Optimized Job Search
-
-- Indexed queries for efficient filtering  
-- Location-based and category-based search  
+- Filter jobs by **category, location, type**.  
+- Indexed queries for performance on large datasets.  
 
 ### 📑 API Documentation
+- Swagger/OpenAPI available at `/api/docs/`.  
+- DRF browsable API included.  
 
-- Swagger documentation available at `/api/docs`  
-
----
-
-## ⚙️ Implementation Process
-
-### Git Commit Workflow
-
-- **Initial Setup**  
-  - `feat: set up Django project with PostgreSQL`  
-- **Feature Development**  
-  - `feat: implement job posting and filtering APIs`  
-  - `feat: add role-based authentication for admins and users`  
-- **Optimization**  
-  - `perf: optimize job search queries with indexing`  
-- **Documentation**  
-  - `feat: integrate Swagger for API documentation`  
-  - `docs: update README with usage details`  
+### 🧪 Testing
+- Automated tests for:
+  - Authentication  
+  - Job CRUD endpoints  
+  - Role-based access  
+  - Filtering & search  
 
 ---
 
-## 🚀 Deployment
+## ⚙️ Setup & Installation
 
-- Host API and Swagger documentation  
-- Accessible at `/api/docs` for frontend integration  
+```bash
+# Clone repository
+git clone https://github.com/your-username/jobboard-backend.git
+cd jobboard-backend
 
----
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
 
-## ✅ Evaluation Criteria
+# Install dependencies
+pip install -r requirements.txt
 
-- **Functionality**: CRUD operations for jobs & categories, role-based authentication  
-- **Code Quality**: Modular, clean, and follows Django best practices  
-- **Performance**: Indexed queries ensure fast job search  
-- **Documentation**: Swagger + README with clear setup instructions  
+# Apply migrations
+python manage.py migrate
 
----
-
-✨ *This project demonstrates the ability to design, optimize, and document a scalable backend system for real-world applications.*
-For any questions or contributions, feel free to open an issue or pull request!
+# Run development server
+python manage.py runserver
