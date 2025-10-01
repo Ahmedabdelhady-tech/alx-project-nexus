@@ -156,9 +156,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-Railway.env/
-runtime.txt/
-Procfile/
+
 # Spyder project settings
 .spyderproject
 .spyproject
